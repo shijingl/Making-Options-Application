@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Login from './components/Login'
 import { connect } from 'react-redux'
 import { handleInitialData } from './actions/shared'
-import './App.css';
+import Dashboard from './components/Dashboard'
+
 
 class App extends Component {
   componentDidMount() {
@@ -12,9 +13,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Login />
+        {this.props.loading === true
+          ? null
+          : <Dashboard />
+        }
       </div>
     )
+  }
+}
+
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null
   }
 }
 
