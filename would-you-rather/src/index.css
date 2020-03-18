@@ -83,12 +83,16 @@ hr {
 .optionOne {
   padding: 20px;
   height: auto;
+  user-select: none;
+  color: #808080;
 }
 
 .optionTwo {
   padding: 20px;
   height: auto;
   margin-bottom: 20px;
+  user-select: none;
+  color: #808080;
 }
 
 .margin {
@@ -111,6 +115,7 @@ hr {
   padding: 10px;
   user-select: none;
   cursor: pointer;
+  color: #808080;
 }
 
 .title-bar {
@@ -122,4 +127,18 @@ hr {
 .nav-account {
   margin-left: auto;
   margin-right: 10px;
+}
+
+.toggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+}
+
+.toggler li {
+  padding-left: 20px;
+  user-select: none;
+  cursor: pointer;
+  color: #808080;
 }
