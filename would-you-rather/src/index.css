@@ -14,13 +14,15 @@ p {
 
 .form {
   width: 400px;
-  height: auto;
+  height:auto;
   border-radius: 15px;
   border: 1px solid #191919;
   box-shadow: 0px 1px 20px 2px rgba(0, 0, 0, 0.25)
 }
 
 .signin-form {
+  position: absolute;
+  margin: 0;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -28,6 +30,7 @@ p {
 
 .question-form {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .form-header {
@@ -36,6 +39,7 @@ p {
   width: 100%;
   height: 35px;
   border-radius: 15px 15px 0 0;
+  text-decoration: none;
 }
 
 .form-body {
@@ -49,6 +53,57 @@ p {
   position: absolute;
   margin: 0;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  user-select: none;
+  text-decoration: none;
+}
+
+.sigin-body-p {
+  display: block;
+  font-size: 14px;
+  padding: 20px;
+  user-select: none;
+}
+
+.profile-pic {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  user-select: none;
+}
+
+.signin-body-form {
+  padding: 10px 0 0 35px;
+}
+
+.button {
+  color: #FFFFFF;
+  background-color: #26AA91;
+  height: 30px;
+  width: 75px;
+  font-size: 12px;
+  border-radius: 2px;
+  border-style: none;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0px 1px 25px 2px rgba(0, 0, 0, 0.15); 
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 300px;
+}
+
+.sign-in-button:hover {
+  background-color: rgb(49, 202, 174);
+}
+
+.login-user-select {
+  position: absolute;
+  top: 110px;
+  background-color: #2A2F33;
+  border: none;
   color: #9E9D9E;
   margin-left: 20px;
 }
@@ -56,17 +111,9 @@ p {
 hr {
   box-sizing: border-box;
   display: inline-block;
-  width: 40%; 
+  width: 40%;
   margin: 0;
   border: 0.5px solid rgb(80, 80, 80);
-  user-select: none;
-}
-
-.profile-pic {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
   user-select: none;
 }
 
@@ -107,6 +154,14 @@ hr {
   margin: 10px;
 }
 
+.padding-left {
+  padding-left: 10px;
+}
+
+.padding-zero {
+  padding-left: 0 !important;
+}
+
 .active {
   color: #CCCCCB
 }
@@ -117,21 +172,27 @@ hr {
   margin: 0;
   padding: 0;
   padding-left: 10px;
+  text-decoration: none;
 }
 
-.nav li {
+.nav-li {
   padding: 10px;
   user-select: none;
   cursor: pointer;
   color: #808080;
   line-height: 1.5;
+  text-decoration: none;
+}
+
+.nav-li:hover {
+  color: #CCCCCB;
 }
 
 .title-bar {
   display: flex;
   background-color: #24292E;
   margin: 0;
-  height: 40px;
+  height: 44px;
 }
 
 .nav-account {
@@ -144,6 +205,7 @@ hr {
   align-items: center;
   justify-content: center;
   list-style: none;
+  margin-bottom: 20px;
 }
 
 .toggler li {
@@ -151,12 +213,4 @@ hr {
   user-select: none;
   cursor: pointer;
   color: #808080;
-}
-
-.padding-left {
-  padding-left: 10px;
-}
-
-.padding-zero {
-  padding-left: 0 !important;
 }
