@@ -1,9 +1,26 @@
 import React, {Component} from 'react'
-// import Icon from './Icon'
-// import { iconLib } from '../iconLib'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class Login extends Component {
+    state = {
+        selectedUser: ''
+    }
+
+    handleLogin = () => {
+        const { selectedUser } = this.state
+        const { setAuthedUser } = this.props
+
+        if (selectedUser) {
+            setAuthedUser(selectedUser)
+        }
+    }
+
+    onSelectUser = (selectedUser) => this.setState({ selectedUser })
+
     render() {
+        const { users } = this.props
+        const { selectedUser } = this.state
         return (
             <div className='form signin-form'>
                 <div className='form-header'>
@@ -13,14 +30,27 @@ class Login extends Component {
                     <form action="">
                         <label className='sigin-body-p'>Select a user: </label>
                         <div className='signin-body-form'>
-                            <select className='login-user-select' name="" id="">
-                                <option className='test' value="" disabled>Please Select</option>
-                                <option className='test' value="oahmaro">oahmaro</option>
-                                <option className='test' value="oahmaro">myaghi</option>
+                            <img
+                                src='https://placeimg.com/100/100/any'
+                                alt="Avatar of oahmaro"
+                                className='profile-pic'
+                            />
+                            <select 
+                                className='login-user-select'
+                                value={selectedUser}
+                                onChange={(e)=>this.onSelectUser(e.target.value)}>
+                                {
+                                    users
+                                    ? Object.keys(users).map(user => 
+                                        <option className='test' key={user} value={user}>
+                                            {user}
+                                        </option>)
+                                    : null
+                                }
                             </select> 
                         </div>
 
-                        <button className='sign-in-button' onClick={this.handleLoggin}>SIGN IN</button>
+                        <button className='sign-in-button' onClick={this.handleLogin}>SIGN IN</button>
                     </form>
                 </div>
             </div>
@@ -28,4 +58,18 @@ class Login extends Component {
     }
 }
 
-export default Login
+function mapStateToProps ({ users }) {
+    return {
+        ...users
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setAuthedUser: (id) => {
+            dispatch(setAuthedUser(id))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
