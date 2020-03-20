@@ -18,9 +18,9 @@ class Dashboard extends Component {
                 <TitleBar />
                 <Toggler />
                 {
-                    answeredQuestions
+                    unansweredQuestions
                     ? <div className='question-form margin'>
-                        {answeredQuestions.map((id) => (
+                        {unansweredQuestions.map((id) => (
                             <Poll key={id} id={id}/> 
                         ))}
                       </div>
@@ -31,11 +31,16 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps ({ questions, authedUsers, users }) {
-    const user = users[authedUsers]
+function mapStateToProps ({ questions, authedUser, users }) {
+    console.log("this is authedUsers questions dashboard", questions);
+    console.log("this is authedUsers dashboard", authedUser);
+    console.log("this is users dashboard", users);
+
+    const user = users[authedUser]
 
     const answeredQuestions = Object.keys(questions).length !== 0
-        ? Object.keys(user.answers).sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+        ? Object.keys(user.answers)
+            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
         : []
 
     const unansweredQuestions = Object.keys(questions).length !== 0

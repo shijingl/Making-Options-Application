@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from 'react'
+import { setAuthedUser } from '../actions/authedUser'
 import { connect } from 'react-redux'
 
 class Account extends Component {
     render () {
-        const { authedUser } = this.props
+        const { authedUser, avatar } = this.props
         return (
             <Fragment>
                 <ul className='nav nav-account'>
@@ -12,7 +13,7 @@ class Account extends Component {
                     </li>
                     <li className='padding-left'>
                         <img 
-                            src='https://placeimg.com/100/100/any'
+                            src={avatar}
                             alt={`Avatar of ${authedUser}`}
                             className='profile-pic scale-down'/>
                     </li>
@@ -25,9 +26,22 @@ class Account extends Component {
     }
 }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
+    console.log("the authed in account user is:", authedUser)
+    console.log("users in account are:", users)
+
+    const avatar = users[authedUser].avatarURL
     return {
-        authedUser
+        authedUser, 
+        avatar
     }
 }
-export default connect(mapStateToProps)(Account)
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setAuthedUser: (id) => {
+            dispatch(setAuthedUser(id))
+        }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Account)
