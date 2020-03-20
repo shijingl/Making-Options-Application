@@ -166,6 +166,11 @@ hr {
   color: #CCCCCB
 }
 
+.scale-down {
+  width: 25px !important;
+  height: 25px !important;
+}
+
 .nav {
   display: flex;
   list-style: none;
