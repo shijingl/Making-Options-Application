@@ -228,3 +228,10 @@ hr {
 .user-name:hover {
   color: #808080;
 }
+
+.poll-form {
+  color: inherit;
+  user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+}

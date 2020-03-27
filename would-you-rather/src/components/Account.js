@@ -7,22 +7,22 @@ class Account extends Component {
         const { setAuthedUser } = this.props
         setAuthedUser(null)
     }
-    
+
     render () {
         const { authedUser, avatar } = this.props
         return (
             <Fragment>
                 <ul className='nav nav-account'>
-                    <li onClick={this.handleLogout}>
+                    <li onClick={this.handleLogout} className='nav-li'>
                         Logout
                     </li>
-                    <li className='user-name'>
+                    <li className='user-name nav-li'>
                         <img 
                             src={avatar}
                             alt={`Avatar of ${avatar}`}
                             className='profile-pic scale-down'/>
                     </li>
-                    <li className='padding-zero user-name'>
+                    <li className='padding-zero user-name nav-li'>
                         {authedUser}
                     </li>
                 </ul>
