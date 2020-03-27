@@ -24,7 +24,6 @@ class App extends Component {
 }
 
 function mapStateToProps({ authedUser }) {
-  console.log("the authed user in app is:", authedUser)
   return {
     authedUser
   }

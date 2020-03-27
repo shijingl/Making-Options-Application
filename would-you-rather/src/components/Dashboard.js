@@ -32,9 +32,6 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps ({ questions, authedUser, users }) {
-    console.log("this is authedUsers questions dashboard", questions);
-    console.log("this is authedUsers dashboard", authedUser);
-    console.log("this is users dashboard", users);
 
     const user = users[authedUser]
 

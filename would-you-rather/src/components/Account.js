@@ -14,7 +14,7 @@ class Account extends Component {
                     <li className='padding-left'>
                         <img 
                             src={avatar}
-                            alt={`Avatar of ${authedUser}`}
+                            alt={`Avatar of ${avatar}`}
                             className='profile-pic scale-down'/>
                     </li>
                     <li className='padding-zero'>
@@ -27,8 +27,6 @@ class Account extends Component {
 }
 
 function mapStateToProps({ authedUser, users }) {
-    console.log("the authed in account user is:", authedUser)
-    console.log("users in account are:", users)
 
     const avatar = users[authedUser].avatarURL
     return {
