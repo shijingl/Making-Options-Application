@@ -19,9 +19,9 @@ class PollDetails extends Component {
     submitAnswer = (e) => {
         e.preventDefault()
 
-        const { authedUser, saveQuestionAnswer } = this.props
+        const { saveQuestionAnswer } = this.props
         const answer = this.state.selectedOption
-        saveQuestionAnswer(authedUser, answer)
+        saveQuestionAnswer(answer)
     }
 
     render() {
@@ -147,8 +147,8 @@ function mapStateToProps ({authedUser, questions, users}, props) {
 function mapDispatchToProps(dispatch, props) {
     const { question_id } = props.match.params
     return {
-        saveQuestionAnswer: (authedUser, answer) => {
-            dispatch(handleSaveQuestionAnswer(authedUser, question_id, answer))
+        saveQuestionAnswer: (answer) => {
+            dispatch(handleSaveQuestionAnswer(question_id, answer))
         }
     }
 }
