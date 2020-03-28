@@ -14,7 +14,7 @@ class Poll extends Component {
         const { id } = this.props
 
         return (
-            <Link to={'/questions/${id}'} className='form margin poll-form'>
+            <Link to={`/questions/${id}`} className='form margin poll-form'>
                 <div className='form-header'>
                     <p className='form-title'>Would You Rather</p>
                 </div>
