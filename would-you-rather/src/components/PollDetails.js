@@ -2,11 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import TitleBar from './TitleBar'
 import { formatDate } from '../utils/api'
+// import FaCheck from 'react-icons/lib/check'
 
 class PollDetails extends Component {
     render() {
-        // const { optionOne, optionTwo } = this.props.question
-        // const { avatar, authedUser } = this.props
         const { avatar, timestamp, username, optionOne, optionTwo } = this.props
         
         return (
