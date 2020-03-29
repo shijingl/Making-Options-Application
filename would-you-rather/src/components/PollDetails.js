@@ -73,7 +73,7 @@ class PollDetails extends Component {
                                             type='radio'
                                             name='select_option'
                                             value='optionOne'
-                                            onclick={this.selectedRadio}
+                                            onClick={this.selectedRadio}
                                         />
                                         <span className="checkmark"></span>
                                     </label>
