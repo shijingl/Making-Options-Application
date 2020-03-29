@@ -10,7 +10,7 @@ class PollDetails extends Component {
         selectedOption: ''
     }
 
-    selectedRadio = (e) => {
+    selectRadio = (e) => {
         this.setState({
             selectedOption: e.target.value
         })
@@ -64,7 +64,7 @@ class PollDetails extends Component {
                             </div>
                         )
                         : (
-                            <form className="form-body no-bottom-round">
+                            <form onSubmit={this.submitAnswer} className="form-body no-bottom-round">
                                 <div className="radio_container-div">
                                     <label className="radio_container">
                                         <span className="input_radio">{optionOne}</span>
@@ -73,7 +73,7 @@ class PollDetails extends Component {
                                             type='radio'
                                             name='select_option'
                                             value='optionOne'
-                                            onClick={this.selectedRadio}
+                                            onClick={this.selectRadio}
                                         />
                                         <span className="checkmark"></span>
                                     </label>
@@ -85,12 +85,12 @@ class PollDetails extends Component {
                                             type='radio'
                                             name='select_option'
                                             value='optionTwo'
-                                            onClick={this.selectedRadio}
+                                            onClick={this.selectRadio}
                                         />
                                         <span className='checkmark'></span>
                                     </label>
                                 </div>
-                                <button className="button" onClick={this.submitAnswer}>Submit</button>
+                                <button className="button">Submit</button>
                             </form>
                         )
                     }

@@ -27,7 +27,7 @@ export function handleInitialUsers(AUTHED_ID) {
 export function handleSaveQuestionAnswer(qid, answer) {
     return (dispatch, getState) => {
         const { authedUser } = getState()
-        return saveQuestionAnswerAPI(authedUser, qid, answer).then(() => {
+        return saveQuestionAnswerAPI({ authedUser, qid, answer }).then(() => {
             dispatch(saveQuestionAnswer(authedUser, qid, answer))
             dispatch(saveUserAnswer(authedUser, qid, answer))
         })
