@@ -408,4 +408,8 @@ color: #cccccb;
   font-size: 13px;
   color: #808080;
   padding: 10px;
-} 
+}
+
+.li-hover:hover {
+  color: #CCCCCB;
+}

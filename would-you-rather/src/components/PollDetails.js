@@ -27,7 +27,7 @@ class PollDetails extends Component {
     render() {
         const { question, authorAvatar, timestamp, author, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
         const optionOneVotes = question.optionOne.votes.length
-        const optionTwoVotes = quesiton.optionTwo.votes.length
+        const optionTwoVotes = question.optionTwo.votes.length
         const optionOnePercetage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const optionTwoPercentage = (optionTwoVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2) 
 
