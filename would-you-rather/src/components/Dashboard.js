@@ -34,17 +34,17 @@ class Dashboard extends Component {
                 </ul>
                 {
                     !loadingBar.default && Object.keys(unansweredPolls).length === 0 && this.state.selectedTab === 'unanswered' && unansweredPolls
-                    ? <p>no result</p>
+                    ? <p className="no-results">no result</p>
                     : null
                 }
                 {
                     !loadingBar.default && Object.keys(answeredPolls).length === 0 && this.state.selectedTab === 'answered' && answeredPolls
-                    ? <p>no results</p>
+                    ? <p className="no-results">no results</p>
                     : null
                 }
                 { 
                     loadingBar.default
-                    ? <p>Loading ...</p>
+                    ? <p className="loading">Loading ...</p>
                     : this.state.selectedTab === 'unanswered' && Object.keys(unansweredPolls).length !== 0
                         ? <div className='question-form margin'>
                             {unansweredPolls.map((id) => (
