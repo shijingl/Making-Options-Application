@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #1D1F23;
   color: #9E9D9E; 
 }
 
@@ -237,7 +236,6 @@ hr {
   color: inherit;
   user-select: none;
   cursor: pointer;
-  height: 100%;
   text-decoration: none;
 }
 
@@ -291,7 +289,7 @@ color: #cccccb;
 }
 
 .radio_container input:checked ~ .checkmark {
-  border: 1px solid #25baa2;
+  border: 1px solid #fc0202;
 }
 
 .checkmark:after {
@@ -310,7 +308,7 @@ color: #cccccb;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #25baa2;
+  background: #fc0202;
 }
 
 .radio_container-div {
@@ -392,7 +390,7 @@ color: #cccccb;
 }
 
 .answered {
-  color: #25baa2 ;
+  color: #fc0202 ;
 }
 
 .padding-right {
@@ -430,7 +428,7 @@ color: #cccccb;
 
 .input-text:focus {
   outline: none;
-  border-bottom: 1px solid #25baa2;
+  border-bottom: 1px solid #fc0202;
   transition: 0.2s linear
 }
 
@@ -462,7 +460,7 @@ color: #cccccb;
 }
 
 .poll-form:hover {
-  border: 1px solid #25baa2;
+  border: 1px solid #fc0202;
 }
 
 .table {
@@ -520,7 +518,7 @@ tr, th {
 }
 
 .click-here {
-  color: #25baa2 !important;
+  color: #fc0202 !important;
 }
 
 .padding-bottom {
