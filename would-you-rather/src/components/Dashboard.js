@@ -2,8 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Poll from './Poll'
 import TitleBar from './TitleBar'
-// import Toggler from './Toggler'
-import { handleInitialQuestions } from '../actions/shared'
+import { handleInitialPolls } from '../actions/shared'
 
 class Dashboard extends Component {
     state = {
@@ -11,12 +10,11 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(handleInitialQuestions())
+        this.props.dispatch(handleInitialPolls())
     }
 
     render () {
-        const { answeredQuestions, unansweredQuestions } = this.props
-        console.log('Answered Questions', answeredQuestions)
+        const { answeredPolls, unansweredPolls } = this.props
         return (
             <Fragment>
                 <TitleBar />
@@ -35,18 +33,18 @@ class Dashboard extends Component {
                     </li>
                 </ul>
                 {
-                    this.state.selectedTab === 'unanswered' && unansweredQuestions
+                    this.state.selectedTab === 'unanswered' && unansweredPolls
                     ? <div className='question-form margin'>
-                        {unansweredQuestions.map((id) => (
+                        {unansweredPolls.map((id) => (
                             <Poll key={id} id={id}/> 
                         ))}
                       </div>
                     : null
                 }
                 {
-                    this.state.selectedTab === 'answered' && answeredQuestions
+                    this.state.selectedTab === 'answered' && answeredPolls
                     ? <div className='question-form margin'>
-                        {answeredQuestions.map((id) => (
+                        {answeredPolls.map((id) => (
                             <Poll key={id} id={id}/>
                         ))}
                     </div>
@@ -57,23 +55,23 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps ({ questions, authedUser, users }) {
+function mapStateToProps ({ polls, authedUser, users }) {
 
     const user = users[authedUser]
 
-    const answeredQuestions = Object.keys(questions).length !== 0
+    const answeredPolls = Object.keys(polls).length !== 0
         ? Object.keys(user.answers)
-            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+            .sort((a, b) => polls[b].timestamp - polls[a].timestamp)
         : []
 
-    const unansweredQuestions = Object.keys(questions).length !== 0
-        ? Object.keys(questions)
-            .filter(questionid => !answeredQuestions.includes(questionid))
-            .sort((a, b) => questions[b].timestamp - questions[a].timestamp)
+    const unansweredPolls = Object.keys(polls).length !== 0
+        ? Object.keys(polls)
+            .filter(pollID => !answeredPolls.includes(pollID))
+            .sort((a, b) => polls[b].timestamp - polls[a].timestamp)
         : []
     return {
-        answeredQuestions,
-        unansweredQuestions,
+        answeredPolls,
+        unansweredPolls,
     }
 }
 export default connect(mapStateToProps)(Dashboard)
