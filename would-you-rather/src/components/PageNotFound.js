@@ -3,9 +3,11 @@ import { NavLink } from 'react-router-dom'
 
 function PageNotFound() {
     return (
-        <div>
+        <div className='center'>
             <h2>Wrong Links!</h2>
-            <NavLink to='/'>Click here</NavLink> home page
+            <p className='padding-top'>
+                <NavLink to='/'>Click here</NavLink> home page
+            </p>
         </div>
     )
 }
