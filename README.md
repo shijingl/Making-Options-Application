@@ -4,7 +4,7 @@
 In this app, users will be able to answer questions, see which questions they havn't answered, see how other poeple have voted, post questions, and see the ranking of users on the leaderboard.
 
 ## Install
-`npm i`
+`npm i` <br>
 `npm start`
 
 ## Play
