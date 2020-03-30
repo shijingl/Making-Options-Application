@@ -43,7 +43,7 @@ class PollDetails extends Component {
                         ? (
                             <div className='form-body no-bottom-round'>
                                 <ul className='no-padding no-margin'>
-                                    <li className="padding-bottom fix-answered-li full-width">
+                                    <li className='fix-answered-li full-width'>
                                         <span className={isOneAnswered ? 'answered' : ''}>{optionOne}</span>
                                         {isOneAnswered ? <FaCheck className='padding-left answered'/> : null}
                                         <span className='vote-result'>{`${optionOneVotes} vote(s) | ${optionOnePercetage}%`}</span>
@@ -55,7 +55,7 @@ class PollDetails extends Component {
                                             <hr/>
                                         </div>
                                     </li>
-                                    <li className="no-padding fix-answered-li full-width">
+                                    <li className='padding-bottom fix-answered-li full-width'>
                                         <span className={isTwoAnswered ? 'answered' : ''}>{optionTwo}</span>
                                         {isTwoAnswered ? <FaCheck className='padding-left answered'/> : null}
                                         <span className='vote-result'>{`${optionTwoVotes} vote(s) | ${optionTwoPercentage}%`}</span>
