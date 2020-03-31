@@ -11,16 +11,11 @@ class AddPoll extends Component {
         toHome: false,
     }
 
-    handleOptionOne = (e) => {
-        this.setState({
-            optionOne: e.target.value
-        })
-    }
-
-    handleOptionTwo = (e) => {
-        this.setState({
-            optionTwo: e.target.value
-        })
+    handleChange = e => {
+        const { name, value } = e.target
+        this.setState(() => ({
+            [name]: value
+        }))
     }
 
     handleSubmit = (e) => {
@@ -55,16 +50,15 @@ class AddPoll extends Component {
                                     placeholder="Option One"
                                     required
                                     spellCheck="false"
-                                    onChange={this.handleOptionOne}
+                                    onChange={this.handleChange}
                                 />
-
                                 <textarea
                                     className="block input-text"
                                     name="optionTwo"
                                     placeholder="Option Two"
                                     required
                                     spellCheck="false"
-                                    onChange={this.handleOptionTwo}
+                                    onChange={this.handleChange}
                                 />
                             </div>
 
