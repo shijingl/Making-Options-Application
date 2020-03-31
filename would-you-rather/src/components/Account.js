@@ -40,11 +40,8 @@ function mapStateToProps({ authedUser, users }) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return {
-        setAuthedUser: (id) => {
-            dispatch(setAuthedUser(id))
-        }
-    }
+const mapDispatchToProps = {
+    setAuthedUser
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Account)

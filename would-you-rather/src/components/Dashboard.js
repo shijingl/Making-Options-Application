@@ -82,4 +82,5 @@ function mapStateToProps ({ polls, authedUser, users, loadingBar }) {
         loadingBar,
     }
 }
+
 export default connect(mapStateToProps)(Dashboard)
