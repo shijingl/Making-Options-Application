@@ -3,7 +3,6 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function PrivateRoute({ component: Component, ...rest }) {
-  console.log("am I in the private route?", rest.authedUser)
   return (
     <Route {...rest} render={function(props) {
       return (
