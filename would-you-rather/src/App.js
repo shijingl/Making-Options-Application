@@ -9,6 +9,7 @@ import LoadingBar from 'react-redux-loading'
 import AddPoll from './components/AddPoll'
 import Leaderboard from './components/Leaderboard'
 import PageNotFound from './components/PageNotFound'
+import PrivateRoute from "./components/PrivateRoute"
 
 class App extends Component {
   componentDidMount() {
@@ -16,23 +17,43 @@ class App extends Component {
     this.props.dispatch(handleInitialUsers(AUTHED_ID))
   }
 
+  /* 
+  render() {  
+    return (
+      <Router>
+        <Fragment>
+          <LoadingBar style={{ backgroundColor: '#25baa2'}}/>
+          <Switch>
+            { 
+              this.props.authedUser === null
+              ? <Route path='/' exact component={Login} />
+              : <Fragment>
+                  <Route path='/' exact component={Dashboard} />
+                  <Route path='/questions/:question_id' component={PollDetails} />
+                  <Route path='/add' exact component={AddPoll} />
+                  <Route path='/leaderboard' exact component={Leaderboard} />
+                </Fragment>
+            }
+            <Route component={PageNotFound} />
+          </Switch>
+        </Fragment>
+      </Router>
+
+    );
+  }
+  */
   render() {
     return (
       <Router>
         <Fragment>
           <LoadingBar style={{ backgroundColor: '#25baa2'}}/>
           <Switch>
-            {
-              this.props.authedUser === null
-              ? <Route path='/' exact component={Login} />
-              : <Fragment>
-                  <Route path='/' exact component={Dashboard} />
-                  <Route path='/questions/:question_id' component={PollDetails} />
-                  <Route path='/add' exact component={AddPoll}/>
-                  <Route path='/leaderboard' exact component={Leaderboard}/>
-                </Fragment>
-            }
-          <Route component={PageNotFound}/>
+            <Route path="/" exact component={Login}/>
+            <PrivateRoute path='/dashboard' exact component={Dashboard} />
+            <PrivateRoute path='/add' exact component={AddPoll} />
+            <PrivateRoute path='/questions/:question_id' component={PollDetails} />
+            <PrivateRoute path='/leaderboard' component={Leaderboard} />
+            <Route component={PageNotFound} />
           </Switch>
         </Fragment>
       </Router>
@@ -40,10 +61,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ authedUser }) {
-  return {
-    authedUser
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default connect()(App)

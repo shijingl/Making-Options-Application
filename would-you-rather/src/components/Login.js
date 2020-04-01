@@ -1,10 +1,12 @@
 import React, {Component, Fragment} from 'react'
 import { connect } from 'react-redux'
+import { Redirect, withRouter } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 class Login extends Component {
     state = {
-        selectedUser: ''
+        selectedUser: '',
+        toHome: false,
     }
 
     handleLogin = () => {
@@ -14,17 +16,28 @@ class Login extends Component {
         if (selectedUser) {
             setAuthedUser(selectedUser)
         } else alert('Select a user!')
+
+        this.setState(() => ({
+            toHome: true
+        }))
     }
 
     onSelectUser = (selectedUser) => this.setState({ selectedUser })
 
     render() {
         const { users } = this.props
-        const { selectedUser } = this.state
+        const { selectedUser, toHome } = this.state
+        const { from } = this.props.location.state || { from: { pathname: '/dashboard'}}
 
         if (users === undefined) {
             return null
         }
+
+        //if authenticated
+		if(toHome) {
+			return <Redirect to={from} />
+        }
+        
         return (
             <Fragment>
                 <div className='form signin-form'>
@@ -75,4 +88,4 @@ const mapDispatchToProps = {
     setAuthedUser
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login))
