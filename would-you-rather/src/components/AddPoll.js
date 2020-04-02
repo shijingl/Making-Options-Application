@@ -20,9 +20,14 @@ class AddPoll extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
+        
         const { optionOne, optionTwo } = this.state
+
         this.props.addPoll(optionOne, optionTwo)
+
         this.setState(() => ({
+            optionOneText:'',
+			optionTwoText:'',
             toHome: true
         }))
     }
@@ -70,7 +75,6 @@ class AddPoll extends Component {
         )
     }
 }
-
 
 function mapStateToProps(dispatch) {
     return {

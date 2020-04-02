@@ -4,6 +4,7 @@ import TitleBar from './TitleBar'
 import { formatDate } from '../utils/helpers'
 import { FaCheck } from 'react-icons/fa'
 import { handleSavePollAnswer } from '../actions/shared'
+import { Redirect } from 'react-router-dom'
 
 class PollDetails extends Component {
     state = {
@@ -26,10 +27,16 @@ class PollDetails extends Component {
 
     render () {
         const { poll, authorAvatar, timestamp, author, optionOne, optionTwo, answered, isOneAnswered, isTwoAnswered } = this.props
+
+        if (!poll) {
+            return <Redirect to="/notfound"/>
+        }
+
         const optionOneVotes = poll.optionOne.votes.length
         const optionTwoVotes = poll.optionTwo.votes.length
         const optionOnePercentage = (optionOneVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
         const optionTwoPercentage = (optionTwoVotes / (optionOneVotes + optionTwoVotes) * 100).toFixed(2)
+
         return (
             <Fragment>
                 <TitleBar />
@@ -114,13 +121,13 @@ class PollDetails extends Component {
 function mapStateToProps ({authedUser, polls, users}, props) {
     const { question_id } = props.match.params
     const poll = polls[question_id]
-    const authorAvatar = users[poll.author].avatarURL
-    const author = users[poll.author].id
-    const timestamp = formatDate (poll.timestamp)
-    const optionOne = poll.optionOne.text
-    const optionTwo = poll.optionTwo.text
-    const isOneAnswered = poll.optionOne.votes.includes(authedUser)
-    const isTwoAnswered = poll.optionTwo.votes.includes(authedUser)
+    const authorAvatar = poll ? users[poll.author].avatarURL: null
+    const author = poll ? users[poll.author].id : null
+    const timestamp = (poll && poll.timestamp) ? formatDate (poll.timestamp) : 0
+    const optionOne = (poll && poll.optionOne.text) ? poll.optionOne.text : ''
+    const optionTwo = (poll && poll.optionTwo.text) ? poll.optionTwo.text : ''
+    const isOneAnswered = (poll && poll.optionOne.votes.includes(authedUser)) ? poll.optionOne.votes.includes(authedUser) : false
+    const isTwoAnswered = (poll && poll.optionTwo.votes.includes(authedUser)) ? poll.optionTwo.votes.includes(authedUser) : false
     const answered = isOneAnswered || isTwoAnswered
 
     return {

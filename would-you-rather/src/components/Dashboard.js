@@ -2,15 +2,10 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import Poll from './Poll'
 import TitleBar from './TitleBar'
-import { handleInitialPolls } from '../actions/shared'
 
 class Dashboard extends Component {
     state = {
         selectedTab: 'unanswered'
-    }
-
-    componentDidMount() {
-        this.props.dispatch(handleInitialPolls())
     }
 
     render () {
@@ -76,6 +71,7 @@ function mapStateToProps ({ polls, authedUser, users, loadingBar }) {
             .filter(pollID => !answeredPolls.includes(pollID))
             .sort((a, b) => polls[b].timestamp - polls[a].timestamp)
         : []
+        
     return {
         answeredPolls,
         unansweredPolls,
